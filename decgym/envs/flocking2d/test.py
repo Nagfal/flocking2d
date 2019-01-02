@@ -21,15 +21,15 @@ if __name__ == '__main__':
     iter_times = 20
 
     parameters_range = {
-        'p_rep':[0.0,200.0],
-        'd_rep':[0.0,200.0],
-        'p_ali':[0.0,200.0],
-        'd_ali':[0.0,200.0],
-        'p_att':[0.0,200.0],
-        'd_att':[0.0,200.0],
-        'p_obstacal':[0.0,200.0],
-        'v_obstacal':[0.0,200.0],
-        'd_obstacal':[0.0,200.0]
+        'p_rep':[0.0,100.0],
+        'd_rep':[0.0,100.0],
+        'p_ali':[0.0,100.0],
+        'd_ali':[0.0,100.0],
+        'p_att':[0.0,100.0],
+        'd_att':[0.0,100.0],
+        'p_obstacal':[0.0,100.0],
+        'v_obstacal':[0.0,100.0],
+        'd_obstacal':[0.0,100.0]
     }
 
     for iter in range(0,iter_times):
@@ -74,7 +74,7 @@ if __name__ == '__main__':
                         #action.append([1,1])
                           
                         #action.append(gs.velocity(observations[j],parameter,info['target_loc'], 5.0 ,8.0))
-                        action.append(gsf.velocity(observations[j],parameter,info['target_loc'], 10 ,15))
+                        action.append(gsf.velocity(observations[j],parameter,info['target_loc'], 5,8))
                     observations, reward, done, info = env.step(action)
                     filepath='d:\\flocking2d_resualt\snapshot\episode'+str(i)
                     if iter == iter_times-1:
@@ -90,7 +90,7 @@ if __name__ == '__main__':
             parameter['avg_reward'] = numpy.mean(reward_sample_list)
             print('para_avg_value = ' + str(parameter['avg_reward']))
             avg_reward.append(numpy.mean(reward_sample_list))
-        #env.render()
+        #env.render() 
         avg_reward_cov.append(avg_reward)
         #iteration
         best_samples = []
